@@ -2,13 +2,16 @@ library(maps)
 library(maptools)
 library(dplyr)
 library(shiny)
+library(shinythemes)
+
 
 ui <- fluidPage(
   includeCSS("www/css/style.css"),
+  theme = shinytheme("yeti"),
   navbarPage(
     "Oil Spill Accident",
     tabPanel("OverView",
-             img(src = "img/ad62.png", alt = "logo", width = 400, height = 300),
+             img(id = "logo", src = "img/ad62.png", alt = "logo", width = 400, height = 300),
              mainPanel(
                tags$div(
                  h3("Overview of our report"),
