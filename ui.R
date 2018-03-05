@@ -4,7 +4,6 @@ library(dplyr)
 library(shiny)
 library(shinythemes)
 
-
 ui <- fluidPage(
   includeCSS("www/css/style.css"),
   theme = shinytheme("yeti"),
@@ -35,12 +34,24 @@ ui <- fluidPage(
                  )
                  ))
                ),
-    tabPanel("Q1"),
+    tabPanel(
+      "Q1", 
+      sidebarLayout(
+        sidebarPanel(
+          numericInput("numin", "Number of Companies", value = 10, min = 1, 
+                       max = 229)
+        ),
+        
+        mainPanel(
+          tableOutput("table")
+        )
+      )
+    ),
     tabPanel("Q2"),
     tabPanel("Q3"),
     tabPanel("Q4"),
     tabPanel("Q5")
-)
+    )
 )
   
 
