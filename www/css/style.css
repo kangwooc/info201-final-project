@@ -1,3 +1,8 @@
+/* adding a style */
 #logo {
-  text-align: center;
+  max-width: 720px;
+  max-height: 400px;
+}
+.container-fluid {
+  
 }
