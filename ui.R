@@ -31,9 +31,24 @@ ui <- fluidPage(
                  )
                  )
                ),
-    tabPanel("Q1", h3("Which corporations are responsible for the oil spills?")),
+
+    tabPanel(
+      "Q1",
+      h3("Which corporations are responsible for the oil spills?"),
+
+      sidebarLayout(
+        sidebarPanel(
+          numericInput("numin", "Number of Companies", value = 10, min = 1,
+                       max = 229)
+        ),
+
+        mainPanel(
+          tableOutput("table")
+        )
+      )
+    ),
     tabPanel("Q2", 
-             h3("Where have these oil spills occurred and what kind of pipeline was it?"),
+    h3("Where have these oil spills occurred and what kind of pipeline was it?"),
              sidebarLayout(
                sidebarPanel(
                  
@@ -41,30 +56,29 @@ ui <- fluidPage(
                mainPanel(
                  plotlyOutput("map")
                  )
-               )
-             ),
+               )),
     tabPanel("Q3",
              h3("Is there a specific kind/type of oil that has been involved in the oil spills?"),
-             mainPanel( 
+             mainPanel(
                 plotlyOutput("barchart"),
                 br(),
-                h3("Description of Liquid Types: "), 
+                h3("Description of Liquid Types: "),
                 p("Biofuel: Alternative fuel(including ethanol blends)"),
-                p("CO2: Carbon Dioxide"), 
+                p("CO2: Carbon Dioxide"),
                 p("Crude Oil: Unrefined petroleum"),
-                p("HVL: Highly Volatile Liquids"), 
+                p("HVL: Highly Volatile Liquids"),
                 p("Non-HVL: Gasses"))
             ),
     tabPanel("Q4",
              h3("What are the causes of these oil spills?")
-             
-             
-             
+
+
+
              ),
     tabPanel("Q5", h3("What was the monetary impact of the spill?"))
 )
 )
-  
 
-  
+
+
 shinyUI(ui)
