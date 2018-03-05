@@ -1,10 +1,6 @@
-library(maps)
-library(maptools)
 library(plotly)
-library(dplyr)
 library(shiny)
 library(shinythemes)
-
 
 ui <- fluidPage(
   includeCSS("www/css/style.css"),
@@ -36,11 +32,21 @@ ui <- fluidPage(
                  )
                ),
     tabPanel("Q1", h3("Which corporations are responsible for the oil spills?")),
-    tabPanel("Q2", h3("Where have these oil spills occurred and what kind of pipeline was it?")),
+    tabPanel("Q2", 
+             h3("Where have these oil spills occurred and what kind of pipeline was it?"),
+             sidebarLayout(
+               sidebarPanel(
+                 
+               ),
+               mainPanel(
+                 plotlyOutput("map")
+                 )
+               )
+             ),
     tabPanel("Q3",
              h3("Is there a specific kind/type of oil that has been involved in the oil spills?"),
              mainPanel( 
-                plotlyOutput("plot"),
+                plotlyOutput("barchart"),
                 br(),
                 h3("Description of Liquid Types: "), 
                 p("Biofuel: Alternative fuel(including ethanol blends)"),
