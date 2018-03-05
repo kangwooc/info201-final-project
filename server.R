@@ -34,9 +34,10 @@ server <- function(input, output, session) {
     return(total.by.company[1:num.companies,])
   })
   # Q2 
-  output$map <- renderPlotly({
-    
-  })
+  #output$map <- renderPlotly({
+  #    
+  #})
+  
   # renderPlotly() also understands ggplot2 objects! code for question 3
   output$barchart <- renderPlotly({
     plot_ly(specific.oil.shortened, x = ~LiquidTypes, y = ~n, type = 'bar',
