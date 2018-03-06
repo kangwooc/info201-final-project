@@ -25,6 +25,6 @@ By looking through the data set and focusing on these key factors provided withi
 ## Members and Roles of Our Group
 
 - David Huang : Data sorting and Creating the graphs/plots for Question 1, Question 2, Question 4 
-- Kangwoo Choi : Overall webpage design, Version control, Organizing a code, Overview, Question 2
-- Yash Singh : Project Manager, Creating the graphs/plots for Question 2, Question 4, Question 5
+- Kangwoo Choi : Overall webpage design, Version control, Organizing a code, Question 2
+- Yash Singh : Project Manager, Writing the script of Overview, Creating the graphs/plots for Question 2, Question 4
 - Matthew Ysals : Data sorting and Creating the graphs/plots for Question 2, Question 3, Question 4

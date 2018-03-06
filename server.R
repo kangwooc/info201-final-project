@@ -4,6 +4,7 @@ library(maptools)
 library(shiny)
 library(plotly)
 library(dplyr)
+
 oil.data <- read.csv('data/database.csv', stringsAsFactors = FALSE)
 
 # Q1
@@ -14,9 +15,10 @@ total.by.company <- oil.data %>% group_by(Operator.Name) %>%
 colnames(total.by.company) <- c("Operator Name", "Number of Oil Spills", 
                                 "Net Loss of Oil in Barrels")
 # Q2
-oil.data$hover <- with(oil.data, paste(Accident.State, '<br>', "county: ", Accident.County, 
-                                       '<br>', "city: ", Accident.City,
-                                       '<br>', "Monetary impacts: ", All.Costs))
+oil.data$hover <- with(oil.data, paste(Accident.State, '<br>', "County: ", Accident.County, 
+                                       '<br>', "City: ", Accident.City,
+                                       '<br>', "Monetary impacts: ", All.Costs, 
+                                       '<br>', "Type of Pipeline", Pipeline.Type))
 
 # Q3
 
@@ -44,12 +46,12 @@ server <- function(input, output, session) {
     g <- list(
       scope = 'usa',
       showlakes = TRUE,
-      lakecolor = toRGB('white')
+      lakecolor = toRGB('white'),
+      projection = list(type = 'Mercator')
     )
     p <- plot_geo(oil.data, locationmode = 'USA-states') %>%
-      add_trace(
-        text = ~hover, locations = ~Accident.State, colors = 'Greens'
-        ) %>%
+      add_markers(x= ~Accident.Longitude, y= ~Accident.Latitude) %>%
+      add_trace(text = ~hover, colors = 'Greens') %>%
         layout(
           title = "Where have these oil spills occurred and what kind of pipeline was it?",
           geo = g
