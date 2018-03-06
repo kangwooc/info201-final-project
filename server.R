@@ -14,7 +14,9 @@ total.by.company <- oil.data %>% group_by(Operator.Name) %>%
 colnames(total.by.company) <- c("Operator Name", "Number of Oil Spills", 
                                 "Net Loss of Oil in Barrels")
 # Q2
-# oil.data$hover <- with(oil.data, paste())
+oil.data$hover <- with(oil.data, paste(Accident.State, '<br>', "county: ", Accident.County, 
+                                       '<br>', "city: ", Accident.City,
+                                       '<br>', "Monetary impacts: ", All.Costs))
 
 # Q3
 
@@ -26,6 +28,10 @@ specific.oil.shortened <- data_frame(LiquidTypes = c("BIOFUEL", "CO2",
                                                      "Crude Oil", "HVL",
                                                      "Non-HVL"), n = specific.oil$n)
 
+# Q4
+
+# Q5
+
 server <- function(input, output, session) {
 
   # Question 1 Table output
@@ -34,9 +40,23 @@ server <- function(input, output, session) {
     return(total.by.company[1:num.companies,])
   })
   # Q2 
-  #output$map <- renderPlotly({
-  #    
-  #})
+  output$map <- renderPlotly({
+    g <- list(
+      scope = 'usa',
+      showlakes = TRUE,
+      lakecolor = toRGB('white')
+    )
+    p <- plot_geo(oil.data, locationmode = 'USA-states') %>%
+      add_trace(
+        text = ~hover, locations = ~Accident.State, colors = 'Greens'
+        ) %>%
+        layout(
+          title = "Where have these oil spills occurred and what kind of pipeline was it?",
+          geo = g
+        )
+        
+    return (p)
+  })
   
   # renderPlotly() also understands ggplot2 objects! code for question 3
   output$barchart <- renderPlotly({

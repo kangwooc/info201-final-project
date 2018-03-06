@@ -41,29 +41,29 @@ ui <- fluidPage(
           numericInput("numin", "Number of Companies", value = 10, min = 1,
                        max = 229)
         ),
-
         mainPanel(
           tableOutput("table")
         )
       )
     ),
     tabPanel("Q2", 
-    h3("Where have these oil spills occurred and what kind of pipeline was it?"),
-             sidebarLayout(
+            h3("Where have these oil spills occurred and what kind of pipeline was it?"),
+            sidebarLayout(
                sidebarPanel(
                  
                ),
                mainPanel(
                  plotlyOutput("map")
                  )
-               )),
+               )
+    ),
     tabPanel("Q3",
              h3("Is there a specific kind/type of oil that has been involved in the oil spills?"),
              mainPanel(
                 plotlyOutput("barchart"),
                 br(),
                 h3("Description of Liquid Types: "),
-                p("Biofuel: Alternative fuel(including ethanol blends)"),
+                p("Biofuel: Alternative fuel (including ethanol blends)"),
                 p("CO2: Carbon Dioxide"),
                 p("Crude Oil: Unrefined petroleum"),
                 p("HVL: Highly Volatile Liquids"),
@@ -75,7 +75,9 @@ ui <- fluidPage(
 
 
              ),
-    tabPanel("Q5", h3("What was the monetary impact of the spill?"))
+    tabPanel("Q5", 
+             h3("What was the monetary impact of the spill?")
+             )
 )
 )
 

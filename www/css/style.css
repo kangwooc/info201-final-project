@@ -1,8 +1,13 @@
 /* adding a style */
+body {
+  box-sizing: border-box;
+  line-height: 1.5;
+}
 #logo {
   max-width: 720px;
   max-height: 400px;
 }
-.container-fluid {
-  
+
+h3 {
+  text-align : center;
 }
