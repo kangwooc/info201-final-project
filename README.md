@@ -27,5 +27,5 @@ By looking through the data set and focusing on these key factors provided withi
 
 - David Huang : Data sorting and Creating the graphs/plots for Question 1, Writing the description for Question 4, 5 and 6
 - Kangwoo Choi : Overall webpage design, Version control, Organizing a code, Adding image and effects for Question 4
-- Yash Singh : Project Manager, Writing the descriptions for question 2, Creating the graphs/plots for Question 2, Question 4, Question 5
+- Yash Singh : Project Manager, Writing the descriptions for question 2, Creating the graphs/plots for Question 2, Question 4, Question 5 and Question 6
 - Matthew Ysals : Data sorting and creating the graphs/plots for Question 3, Writing descriptions for Question 1 and 3
