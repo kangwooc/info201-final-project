@@ -11,7 +11,7 @@ By looking through the data set and focusing on these key factors provided withi
     <li>Where have these oil spills occurred and what kind of pipeline was it?</li>
     <li>Is there a specific kind/type of oil that has been involved in the oil spills?</li>
     <li>What are the causes of these oil spills?</li>
-    <li></li>
+    <li>What was the monetary impact of the oil spill by case?</li>
 </ol>
 
 ## Tools for Implementing Our Report
@@ -24,7 +24,7 @@ By looking through the data set and focusing on these key factors provided withi
 
 ## Members and Roles of Our Group
 
-- David Huang : Data sorting and Creating the graphs/plots for Question 1, Question 2, Question 4 
-- Kangwoo Choi : Overall webpage design, Version control, Organizing a code, Question 2
-- Yash Singh : Project Manager, Writing the script of Overview, Creating the graphs/plots for Question 2, Question 4
-- Matthew Ysals : Data sorting and Creating the graphs/plots for Question 2, Question 3, Question 4
+- David Huang : Data sorting and Creating the graphs/plots for Question 1
+- Kangwoo Choi : Overall webpage design, Version control, Organizing a code, Adding image and effects for Question 4
+- Yash Singh : Project Manager, Writing the descriptions, Creating the graphs/plots for Question 2, Question 5
+- Matthew Ysals : Data sorting and Creating the graphs/plots for Question 2, Question 3

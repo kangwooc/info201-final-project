@@ -1,13 +1,14 @@
 library(plotly)
 library(shiny)
 library(shinythemes)
+source("source.R")
 
 ui <- fluidPage(
   includeCSS("www/css/style.css"),
   theme = shinytheme("yeti"),
   navbarPage(
     "Oil Spill Accident",
-    tabPanel("OverView",
+    tabPanel("Overview",
              img(id = "logo", src = "img/ad62.png", alt = "logo"),
              mainPanel(
                  h3("Overview of our report"),
@@ -35,27 +36,31 @@ ui <- fluidPage(
     tabPanel(
       "Q1",
       h3("Which corporations are responsible for the oil spills?"),
-
       sidebarLayout(
         sidebarPanel(
-          numericInput("numin", "Number of Companies", value = 10, min = 1,
-                       max = 229)
+          numericInput("numin", paste0("Number of Companies [Max = ", companies.total,"]"), value = 10, min = 1, max = companies.total)
         ),
         mainPanel(
-          tableOutput("table")
+          tableOutput("table"),
+          h4('Description'),
+          p()
         )
       )
     ),
     tabPanel("Q2", 
-            h3("Where have these oil spills occurred and what kind of pipeline was it?"),
-            sidebarLayout(
+             h3("Where have these oil spills occurred and what kind of pipeline was it?"),
+             sidebarLayout(
                sidebarPanel(
-                 
+                 sliderInput("yearSlider", label = "Years:", min = 2010, max=2017, value = 2010)
                ),
                mainPanel(
-                 plotlyOutput("map")
-                 )
+                 plotlyOutput("map"),
+                 h4('Description'),
+                 p("The map visualization provides location of oil spills in the United States. It allows the user to gauge at patterns of how/where these oil spills occur.
+                   Additionally, the year silder, (2010 ~ 2017), allows a way to contextualize the patterns and oil spills."),
+                 p("This visualization shows that a large number of oil spills occur in the state of Texas, and helps us understand where we might want to focus on our efforts to prevent further oil spills.")
                )
+            )
     ),
     tabPanel("Q3",
              h3("Is there a specific kind/type of oil that has been involved in the oil spills?"),
@@ -70,17 +75,98 @@ ui <- fluidPage(
                 p("Non-HVL: Gasses"))
             ),
     tabPanel("Q4",
-             h3("What are the causes of these oil spills?")
-
-
-
-             ),
-    tabPanel("Q5", 
-             h3("What was the monetary impact of the spill?")
+             h3("What are the causes of these oil spills?"),
+             tags$div(
+               class = "row section",
+               tags$div(class = "col-sm-6",
+                tags$div(class = "col-sm-3",
+                  img(class = "q4", src = "img/id_not_verified.png")
+                  ) 
+                ,
+                 tags$div(class = "col-sm-3",
+                   h4("Incorrect Operation"),
+                   p(class = "num", incorrect.operation)
+                  )
+               ),
+               tags$div(class = "col-sm-6",
+                 tags$div(class = "col-sm-3",
+                   img(class = "q4", src = "img/settings3.png")
+                   ),
+                 tags$div(class = "col-sm-3",
+                   h4("Equipment Failure"),
+                   p(class = "num", material.failures)
+                 )
+               )
+               ),
+             tags$div(
+               class = "row section",
+               tags$div(class = "col-sm-6",
+                 tags$div(class = "col-sm-3",
+                         img(class = "q4", src = "img/spade.png")
+                         ),
+                 tags$div(class = "col-sm-3",
+                   h4("Excavation Damage"),
+                   p(class = "num", excavation.damage)
+                 )
+               ),
+               tags$div(
+                 class = "col-sm-6",
+                 tags$div(class = "col-sm-3",
+                          img(class = "q4", src = "img/test_tube.png")
+                          ),
+                 tags$div(class = "col-sm-3",
+                             h4("Corrosion"),
+                             p(class = "num", corrsion)
+                           )
+               )),
+             tags$div(
+               class = "row section",
+               tags$div(class = "col-sm-6",
+                        tags$div(class = "col-sm-3",
+                                img(class = "q4", src = "img/other_causes.png")
+                        ),
+                        tags$div(class = "col-sm-3",
+                                 h4("Any other causes")
+                                ,p(class = "num", other.damage)
+                        )
+                        
+               ),
+               tags$div(class = "col-sm-6",
+                        tags$div(class = "col-sm-3",
+                                 img(class = "q4", src = "img/tornado_filled.png"))
+                        ,
+                        tags$div(class = "col-sm-3",
+                                 h4("Natural Disaster"),
+                                  p(class = "num", natural.force.damage)
+                        )
+               )
              )
+             ),
+    tabPanel("Q5",
+             h3("What was the monetary impact of the oil spill?"),
+             sidebarLayout(
+               sidebarPanel(
+                 selectizeInput("Report.Number", label = "Report Number:",
+                                choices = oil.data$Report.Number, 
+                                multiple = FALSE),
+                 p("---------------Narrow Down---------------"),
+                 selectizeInput("selectYear", label = "Accident Year:",
+                                choices = c(2010:2017), 
+                                multiple = FALSE),
+                 
+                 selectizeInput("selectState", label = "Accident State:",
+                                choices = listOfStates, 
+                                multiple = FALSE)
+               ),
+               mainPanel(
+                 plotlyOutput('money.donut'),
+                 br(), br(), br(), 
+                 h4("Table to help you narrow down your search for particular oil spill"),
+                 br(),
+                 tableOutput('narrow.table')
+               )
+             ))
+  )
 )
-)
-
-
 
 shinyUI(ui)
