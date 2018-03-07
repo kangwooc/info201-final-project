@@ -12,11 +12,12 @@ By looking through the data set and focusing on these key factors provided withi
     <li>Is there a specific kind/type of oil that has been involved in the oil spills?</li>
     <li>What are the causes of these oil spills?</li>
     <li>What was the monetary impact of the oil spill by case?</li>
+    <li>What are the trends in the breakdown of the cost of oil spills?</li>
 </ol>
 
 ## Tools for Implementing Our Report
 
-- HTML, CSS
+- HTML, CSS (for styling the web report)
 - R (including dplyr)
 - Git / GitHub (for version control)
 - Shinyapp (for deploying the web application)
@@ -24,7 +25,7 @@ By looking through the data set and focusing on these key factors provided withi
 
 ## Members and Roles of Our Group
 
-- David Huang : Data sorting and Creating the graphs/plots for Question 1
+- David Huang : Data sorting and Creating the graphs/plots for Question 1, Writing the description for Question 4, 5 and 6
 - Kangwoo Choi : Overall webpage design, Version control, Organizing a code, Adding image and effects for Question 4
-- Yash Singh : Project Manager, Writing the descriptions, Creating the graphs/plots for Question 2, Question 5
-- Matthew Ysals : Data sorting and Creating the graphs/plots for Question 2, Question 3
+- Yash Singh : Project Manager, Writing the descriptions for question 2, Creating the graphs/plots for Question 2, Question 4, Question 5
+- Matthew Ysals : Data sorting and creating the graphs/plots for Question 3, Writing descriptions for Question 1 and 3

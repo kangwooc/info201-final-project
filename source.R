@@ -20,7 +20,6 @@ oil.map <- select(oil.data, Accident.Year, Operator.Name, Liquid.Type,
                   Accident.Longitude, All.Costs)
 
 # Q3
-
 operator.total <- oil.data %>% group_by(Operator.Name) %>% tally()
 
 specific.oil <- oil.data %>% group_by(Liquid.Type) %>% tally()
@@ -42,3 +41,15 @@ other.damage <- oil.data %>% filter(Cause.Category == "ALL OTHER CAUSES") %>% nr
 # Q5
 listOfStates <- unique(oil.data$Accident.State)
 listOfStates <- state.name[match(listOfStates, state.abb)]
+table.data <- oil.data %>% select(Report.Number, Accident.Year,
+                                  Accident.City, Accident.County, 
+                                  Accident.State, Operator.Name, Liquid.Type)
+
+# Q6
+stack.data <- group_by(oil.data, Accident.Year) %>% 
+  summarise(Property.Damage.Costs = sum(Property.Damage.Costs, na.rm = TRUE),
+            Lost.Commodity.Costs = sum(Lost.Commodity.Costs, na.rm = TRUE),
+            Public.Private.Property.Damage.Costs = sum(Public.Private.Property.Damage.Costs, na.rm = TRUE), 
+            Emergency.Response.Costs = sum(Emergency.Response.Costs, na.rm = TRUE), 
+            Environmental.Remediation.Costs = sum(Environmental.Remediation.Costs, na.rm = TRUE), 
+            Other.Costs = sum(Other.Costs, na.rm = TRUE))
