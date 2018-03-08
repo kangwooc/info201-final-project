@@ -57,7 +57,7 @@ ui <- fluidPage(
                mainPanel(
                  plotlyOutput("map"),
                  h4('Description'),
-                 p("The map visualization provides location of oil spills in the United States. It allows the user to gauge at patterns of how/where these oil spills occur.
+                 p("The map visualization provides locations of oil spills in the United States. It allows the user to gauge at patterns of how/where these oil spills occur.
                    Additionally, the year silder, (2010 ~ 2017), allows a way to contextualize the patterns and oil spills."),
                  p("This visualization shows that a large number of oil spills occur in the state of Texas, and helps us understand where we might want to focus on our efforts to prevent further oil spills.")
                )
@@ -82,7 +82,7 @@ ui <- fluidPage(
                    to the left, that have been involved in incidents regarding 
                    oil spills. Of the many incidents that have occurred throughout 
                    the years, one can see that the majority of oil spills revolve 
-                   around 'Crude Oil'. ")
+                   around 'Crude Oil'. This helps us understand that we need to focus on improving/upgrading our facilities that use crude oil")
                )
              )
     ),
@@ -155,7 +155,10 @@ ui <- fluidPage(
                )
              ),
              h4("Description"),
-             p("This page displays the number of spills attributed to each one of these primary causes for oil spill accidents. Knowing the most prevalent causes of mishap may help in identifying key problem areas in which the most improvement is needed.")
+             p("This page displays the number of spills attributed to each one of these primary causes for oil spill accidents. 
+                Knowing the most prevalent causes of mishap may help in identifying key problem areas in which the most improvement is needed. 
+                We can clearly see that the most common cause for an oil spill is due to equipment failure, 
+               this tells us that we need to be more vigilant in installing and mantaining equipment")
     ),
     tabPanel("Q5",
              h3(class = "title", "What was the monetary impact of the oil spill?"),
@@ -192,7 +195,7 @@ ui <- fluidPage(
                plotlyOutput("stack"),
                h4("Description"),
                p("This area graph breaks down the cumulative cost of oil spills in each year into different categories, such as property damage costs and environmental reparation costs. Individual graphs of the costs can be displayed by clicking on the legend to remove and add area trendlines.
-Over time we can see there seems to a general decrease over time in the costs associated with oil spills, perhaps indicating a decrease in overall oil spills. Perhaps it is worth noting that the skew in the data or massive spike in environmental reparation costs in 2010 can likely be attributed to the Deepwater Horizon explosion, which resulted in the largest marine oil spill in history.")
+Over time we can see there seems to be a general decrease in the costs associated with oil spills, perhaps indicating a decrease in overall oil spills. Perhaps it is worth noting that the skew in the data or massive spike in environmental reparation costs in 2010 can likely be attributed to the Deepwater Horizon explosion, which resulted in the largest marine oil spill in history.")
                )
              )
     )
