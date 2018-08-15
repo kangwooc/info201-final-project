@@ -15,7 +15,7 @@ By looking through the data set and focusing on these key factors provided withi
     <li>What are the trends in the breakdown of the cost of oil spills?</li>
 </ol>
 
-## Tools for Implementing Our Report
+## Tools for Implementing The Report
 
 - HTML, CSS (for styling the web report)
 - R (including dplyr)
